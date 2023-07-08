@@ -39,3 +39,11 @@ message ReadBooksRequest {
 message ReadBooksResponse {
     repeated Book books = 1;
 }
+
+message UpdateBookRequest {
+    string id = 1;
+}
+
+message UpdateBookResponse {
+    Book book = 1;
+}
