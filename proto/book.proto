@@ -11,6 +11,11 @@ message Book {
     string owner = 4;
 }
 
+message Owner {
+    string id = 1;
+    string name = 2;
+}
+
 message CreateBookRequest {
     Book book = 1;
 }
