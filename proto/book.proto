@@ -23,3 +23,11 @@ message CreateBookRequest {
 message CreateBookResponse {
     Book book = 1;
 }
+
+message ReadBookRequest {
+    string owner = 1;
+}
+
+message ReadBookResponse {
+    Book book = 1;
+}
