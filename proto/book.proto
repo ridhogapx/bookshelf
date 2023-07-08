@@ -31,3 +31,11 @@ message ReadBookRequest {
 message ReadBookResponse {
     Book book = 1;
 }
+
+message ReadBooksRequest {
+
+}
+
+message ReadBooksResponse {
+    repeated Book books = 1;
+}
