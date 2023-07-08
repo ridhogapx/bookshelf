@@ -55,3 +55,11 @@ message DeleteBookRequest {
 message DeleteBookResponse {
     bool success = 1;
 }
+
+service BookService {
+    rpc CreateBook(CreateBookRequest) returns (CreateBookResponse) {}
+    rpc GetBook(ReadBookRequest) returns (ReadBookResponse) {}
+    rpc GetBooks(ReadBooksRequest) returns (ReadBooksResponse) {}
+    rpc UpdateBook(UpdateBookRequest) returns (UpdateBookResponse) {}
+    rpc DeleteBook(DeleteBookRequest) returns (DeleteBookResponse) {}
+}
