@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./proto";
+
+message Owner {
+    string id = 1;
+    string name = 2;
+}
+
+message CreateOwnerRequest {
+    Owner owner = 1;
+}
+
+message CreateOwnerResponse {
+    Owner owner = 1;
+}
+
+message ReadOwnerRequest {
+    string id = 1;
+}
+
+message ReadOwnerResponse {
+    Owner owner = 1;
+}
+
+message ReadOwnersRequest {
+
+}
+
+message ReadOwnersResponse {
+    repeated Owner owners = 1;
+}
+
+message UpdateOwnerRequest {
+    string id = 1;
+}
+
+message UpdateOwnerResponse {
+    Owner owner = 1;
+}
+
+message DeleteOwnerRequest {
+    string id = 1;
+}
+
+message DeleteOwnerResponse {
+    bool success = 1;
+}
+
+service OwnerService {
+    rpc CreateOwner(CreateOwnerRequest) returns (CreateOwnerResponse) {}
+    rpc GetOwner(ReadOwnerRequest) returns (ReadOwnerResponse) {}
+    rpc GetOwners(ReadOwnersRequest) returns (ReadOwnersResponse) {}
+    rpc UpdateOwner(UpdateOwnerRequest) returns (UpdateOwnerResponse) {}
+    rpc DeleteOwner(DeleteOwnerRequest) returns (DeleteOwnerResponse) {}
+}
