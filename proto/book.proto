@@ -47,3 +47,11 @@ message UpdateBookRequest {
 message UpdateBookResponse {
     Book book = 1;
 }
+
+message DeleteBookRequest {
+    string id = 1;
+}
+
+message DeleteBookResponse {
+    bool success = 1;
+}
