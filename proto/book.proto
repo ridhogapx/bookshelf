@@ -10,3 +10,10 @@ message Book {
     string author = 3;
 }
 
+message CreateBookRequest {
+    Book book = 1;
+}
+
+message CreateBookResponse {
+    Book book = 1;
+}
