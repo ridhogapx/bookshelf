@@ -1,6 +1,8 @@
 package db
 
 import (
+	"bookshelf/model"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -17,4 +19,7 @@ func init() {
 	}
 
 	// Model Initiator
+	DB.AutoMigrate(model.Book{})
+	DB.AutoMigrate(model.Owner{})
+
 }
