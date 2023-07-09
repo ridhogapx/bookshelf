@@ -2,6 +2,7 @@ package main
 
 import (
 	pb "bookshelf/proto"
+	"bookshelf/service"
 	"flag"
 	"fmt"
 	"net"
@@ -13,11 +14,6 @@ var (
 	port = flag.Int("port", 50051, "gRPC port")
 )
 
-type server struct {
-	pb.UnimplementedBookServiceServer
-	pb.UnimplementedOwnerServiceServer
-}
-
 func main() {
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", port))
 
@@ -27,7 +23,7 @@ func main() {
 
 	s := grpc.NewServer()
 
-	pb.RegisterBookServiceServer(s, &server{})
+	pb.RegisterBookServiceServer(s, &service.BookSrv{})
 
 	if err := s.Serve(lis); err != nil {
 		panic("Failed to start gRPC Server!")
