@@ -15,9 +15,11 @@ var (
 )
 
 func main() {
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", port))
+	fmt.Println("Running gRPC...")
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 
 	if err != nil {
+		fmt.Println("Error:", err)
 		panic("Failed to listen gRPC server!")
 	}
 
@@ -25,7 +27,10 @@ func main() {
 
 	pb.RegisterBookServiceServer(s, &service.BookSrv{})
 
-	if err := s.Serve(lis); err != nil {
+	fmt.Printf("gRPC Server running on port %v", *port)
+
+	if errS := s.Serve(lis); errS != nil {
 		panic("Failed to start gRPC Server!")
 	}
+
 }
