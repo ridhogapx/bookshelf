@@ -10,6 +10,11 @@ import (
 var DB *gorm.DB
 
 func init() {
+	ConnectionDB()
+
+}
+
+func ConnectionDB() {
 	var err error
 	dsn := "host=localhost user=root password=root dbname=bookshelf port=5432 sslmode=disable"
 
@@ -21,5 +26,4 @@ func init() {
 	// Model Initiator
 	DB.AutoMigrate(model.Book{})
 	DB.AutoMigrate(model.Owner{})
-
 }
