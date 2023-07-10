@@ -50,7 +50,7 @@ func (*BookSrv) GetBook(ctx context.Context, req *pb.ReadBookRequest) (*pb.ReadB
 
 	result := config.DB.First(&book, "owner = ?", reqBook)
 	if result.Error != nil {
-		return nil, errors.New("Data is not found")
+		return nil, errors.New("data is not found")
 	}
 
 	return &pb.ReadBookResponse{
