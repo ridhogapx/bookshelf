@@ -11,7 +11,7 @@ var DB *gorm.DB
 
 func init() {
 	ConnectionDB()
-
+	ConnectRPC()
 }
 
 func ConnectionDB() {
