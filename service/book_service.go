@@ -68,7 +68,7 @@ func (*BookSrv) GetBooks(ctx context.Context, req *pb.ReadBooksRequest) (*pb.Rea
 
 	result := config.DB.Find(&books)
 
-	if result != nil {
+	if result.Error != nil {
 		return nil, errors.New("record not found")
 	}
 
