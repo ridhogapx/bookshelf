@@ -5,6 +5,7 @@ import (
 	"bookshelf/model"
 	pb "bookshelf/proto"
 	"context"
+	"errors"
 )
 
 /*
@@ -47,7 +48,10 @@ func (*BookSrv) GetBook(ctx context.Context, req *pb.ReadBookRequest) (*pb.ReadB
 
 	reqBook := req.GetOwner()
 
-	config.DB.First(&book, "owner = ?", reqBook)
+	result := config.DB.First(&book, "owner = ?", reqBook)
+	if result.Error != nil {
+		return nil, errors.New("Data is not found")
+	}
 
 	return &pb.ReadBookResponse{
 		Book: &pb.Book{
