@@ -58,6 +58,7 @@ func OwnerBook(ctx *gin.Context) {
 		ctx.JSON(400, gin.H{
 			"error": err,
 		})
+		return
 	}
 
 	ctx.JSON(200, entity.BookEntity{
