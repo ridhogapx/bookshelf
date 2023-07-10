@@ -67,3 +67,15 @@ func OwnerBook(ctx *gin.Context) {
 		Owner:  res.Book.Owner,
 	})
 }
+
+func AllBook(ctx *gin.Context) {
+	res, err := client.GetBooks(ctx, &pb.ReadBooksRequest{})
+
+	if err != nil {
+		ctx.JSON(400, gin.H{
+			"error": err,
+		})
+		return
+	}
+
+}
