@@ -76,3 +76,19 @@ func (*BookSrv) GetBooks(ctx context.Context, req *pb.ReadBooksRequest) (*pb.Rea
 		Books: books,
 	}, nil
 }
+
+func (*BookSrv) UpdateBook(ctx context.Context, req *pb.UpdateBookRequest) (*pb.UpdateBookResponse, error) {
+	arg := req.GetBook()
+
+	q := config.DB.Where("id = ?", arg.GetId()).Updates(model.Book{
+		ID:     arg.GetId(),
+		Title:  arg.GetTitle(),
+		Author: arg.GetAuthor(),
+		Owner:  arg.GetOwner(),
+	})
+
+	if q.Error != nil {
+		return nil, errors.New("Failed to update data")
+	}
+
+}
