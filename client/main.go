@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bookshelf/controller"
 	"flag"
 
 	"github.com/gin-gonic/gin"
@@ -30,7 +31,9 @@ func main() {
 	// Grouping Route
 	v1 := r.Group("/api/v1")
 	{
-		v1.POST("/book")
+		v1.POST("/book", controller.AddBook)
 	}
+
+	r.Run(":3000")
 
 }
