@@ -79,8 +79,6 @@ func AllBook(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(200, gin.H{
-		"data": res,
-	})
+	ctx.JSON(200, res)
 
 }
