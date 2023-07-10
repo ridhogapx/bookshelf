@@ -1,7 +1,7 @@
 package service
 
 import (
-	"bookshelf/db"
+	"bookshelf/config"
 	"bookshelf/model"
 	pb "bookshelf/proto"
 	"context"
@@ -21,7 +21,7 @@ func (*BookSrv) CreateBook(ctx context.Context, req *pb.CreateBookRequest) (*pb.
 		Owner:  book.GetOwner(),
 	}
 
-	db.DB.Create(&data)
+	config.DB.Create(&data)
 
 	return &pb.CreateBookResponse{
 		Book: &pb.Book{
