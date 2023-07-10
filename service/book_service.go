@@ -41,3 +41,20 @@ func (*BookSrv) CreateBook(ctx context.Context, req *pb.CreateBookRequest) (*pb.
 	}, nil
 
 }
+
+func (*BookSrv) GetBook(ctx context.Context, req *pb.ReadBookRequest) (*pb.ReadBookResponse, error) {
+	var book model.Book
+
+	reqBook := req.GetOwner()
+
+	config.DB.First(&book, "owner = ?", reqBook)
+
+	return &pb.ReadBookResponse{
+		Book: &pb.Book{
+			Id:     book.ID,
+			Title:  book.Title,
+			Author: book.Author,
+			Owner:  book.Owner,
+		},
+	}, nil
+}
