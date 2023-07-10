@@ -8,6 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var client = pb.NewBookServiceClient()
+
 func AddBook(ctx gin.Context) {
 	var book entity.BookEntity
 
