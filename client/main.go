@@ -14,6 +14,7 @@ var (
 func main() {
 	flag.Parse()
 
+	// Connection
 	conn, err := grpc.Dial(*addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
 
 	if err != nil {
@@ -21,4 +22,7 @@ func main() {
 	}
 
 	defer conn.Close()
+
+	// Gin Route
+
 }
