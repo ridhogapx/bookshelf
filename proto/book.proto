@@ -36,7 +36,7 @@ message ReadBooksResponse {
 }
 
 message UpdateBookRequest {
-    string id = 1;
+    Book book = 1;
 }
 
 message UpdateBookResponse {
