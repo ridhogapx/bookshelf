@@ -47,3 +47,23 @@ func AddBook(ctx *gin.Context) {
 	})
 
 }
+
+func SingleBook(ctx *gin.Context) {
+
+	res, err := client.GetBook(ctx, &pb.ReadBookRequest{
+		Owner: ctx.Param("owner"),
+	})
+
+	if err != nil {
+		ctx.JSON(400, gin.H{
+			"error": err,
+		})
+	}
+
+	ctx.JSON(200, entity.BookEntity{
+		ID: res.Book.Id,
+		Title: res.Book.Title,
+		Author: res.Book.Author,
+		Owner: res.Book.Owner,
+	})
+}
