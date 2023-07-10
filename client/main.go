@@ -27,4 +27,10 @@ func main() {
 	// Intialize Gin
 	r := gin.Default()
 
+	// Grouping Route
+	v1 := r.Group("/api/v1")
+	{
+		v1.POST("/book")
+	}
+
 }
