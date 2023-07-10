@@ -48,7 +48,7 @@ func AddBook(ctx *gin.Context) {
 
 }
 
-func SingleBook(ctx *gin.Context) {
+func OwnerBook(ctx *gin.Context) {
 
 	res, err := client.GetBook(ctx, &pb.ReadBookRequest{
 		Owner: ctx.Param("owner"),
@@ -61,9 +61,9 @@ func SingleBook(ctx *gin.Context) {
 	}
 
 	ctx.JSON(200, entity.BookEntity{
-		ID: res.Book.Id,
-		Title: res.Book.Title,
+		ID:     res.Book.Id,
+		Title:  res.Book.Title,
 		Author: res.Book.Author,
-		Owner: res.Book.Owner,
+		Owner:  res.Book.Owner,
 	})
 }

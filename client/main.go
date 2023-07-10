@@ -14,7 +14,7 @@ func main() {
 	v1 := r.Group("/api/v1")
 	{
 		v1.POST("/book", controller.AddBook)
-		v1.GET("/book/:owner", controller.SingleBook)
+		v1.GET("/book/:owner", controller.OwnerBook)
 	}
 
 	r.Run(":3000")
