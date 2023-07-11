@@ -82,3 +82,37 @@ func AllBook(ctx *gin.Context) {
 	ctx.JSON(200, res)
 
 }
+
+func EditBook(ctx *gin.Context) {
+	var book entity.BookEntity
+
+	err := ctx.ShouldBind(&book)
+
+	if err != nil {
+		ctx.JSON(400, gin.H{
+			"error": err,
+		})
+		return
+	}
+
+	data := &pb.Book{
+		Id:     book.ID,
+		Title:  book.Title,
+		Author: book.Author,
+		Owner:  book.Owner,
+	}
+
+	res, err := client.UpdateBook(ctx, &pb.UpdateBookRequest{
+		Book: data,
+	})
+
+	if err != nil {
+		ctx.JSON(400, gin.H{
+			"error": err,
+		})
+		return
+	}
+
+	ctx.JSON(201, res)
+
+}
