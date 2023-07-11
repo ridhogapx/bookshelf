@@ -16,6 +16,7 @@ func main() {
 		v1.POST("/book", controller.AddBook)
 		v1.GET("/book/:owner", controller.OwnerBook)
 		v1.GET("/book", controller.AllBook)
+		v1.PUT("/book/:id", controller.EditBook)
 	}
 
 	r.Run(":3000")
