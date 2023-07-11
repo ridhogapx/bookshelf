@@ -118,3 +118,25 @@ func EditBook(ctx *gin.Context) {
 	ctx.JSON(201, res)
 
 }
+
+func RemoveBook(ctx *gin.Context) {
+	id := ctx.Param("id")
+
+	res, err := client.DeleteBook(ctx, &pb.DeleteBookRequest{
+		Id: id,
+	})
+
+	if err != nil {
+		ctx.JSON(400, gin.H{
+			"error": err,
+		})
+
+		return
+	}
+
+	ctx.JSON(201, gin.H{
+		"message": "Successfully remove book!",
+		"success": res.Success,
+	})
+
+}
