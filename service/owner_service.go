@@ -24,7 +24,7 @@ func (*OwnerSrv) CreateOwner(ctx context.Context, req *pb.CreateOwnerRequest) (*
 	result := config.DB.Create(&data)
 
 	if result.Error != nil {
-		return nil, errors.New("Failed to add new record")
+		return nil, errors.New("failed to add new record")
 	}
 
 	return &pb.CreateOwnerResponse{
