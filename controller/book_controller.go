@@ -86,6 +86,8 @@ func AllBook(ctx *gin.Context) {
 func EditBook(ctx *gin.Context) {
 	var book entity.BookEntity
 
+	bookID := ctx.Param("id")
+
 	err := ctx.ShouldBind(&book)
 
 	if err != nil {
@@ -96,7 +98,7 @@ func EditBook(ctx *gin.Context) {
 	}
 
 	data := &pb.Book{
-		Id:     book.ID,
+		Id:     bookID,
 		Title:  book.Title,
 		Author: book.Author,
 		Owner:  book.Owner,
