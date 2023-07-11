@@ -101,3 +101,20 @@ func (*BookSrv) UpdateBook(ctx context.Context, req *pb.UpdateBookRequest) (*pb.
 		},
 	}, nil
 }
+
+func (*BookSrv) DeleteBook(ctx context.Context, req *pb.DeleteBookRequest) (*pb.DeleteBookResponse, error) {
+	arg := req.GetId()
+	var book model.Book
+
+	result := config.DB.Where("id = ?", arg).Delete(&book)
+
+	if result.Error != nil {
+		return &pb.DeleteBookResponse{
+			Success: false,
+		}, errors.New("failed to delete record")
+	}
+
+	return &pb.DeleteBookResponse{
+		Success: true,
+	}, nil
+}
