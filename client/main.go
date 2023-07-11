@@ -17,6 +17,7 @@ func main() {
 		v1.GET("/book/:owner", controller.OwnerBook)
 		v1.GET("/book", controller.AllBook)
 		v1.PUT("/book/:id", controller.EditBook)
+		v1.DELETE("/book/:id", controller.RemoveBook)
 	}
 
 	r.Run(":3000")
