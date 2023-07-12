@@ -12,7 +12,6 @@ type OwnerSrv struct {
 	pb.UnimplementedOwnerServiceServer
 }
 
-// Should add new record
 func (*OwnerSrv) CreateOwner(ctx context.Context, req *pb.CreateOwnerRequest) (*pb.CreateOwnerResponse, error) {
 	arg := req.GetOwner()
 
@@ -34,4 +33,19 @@ func (*OwnerSrv) CreateOwner(ctx context.Context, req *pb.CreateOwnerRequest) (*
 		},
 	}, nil
 
+}
+
+func (*OwnerSrv) GetOwners(ctx context.Context, req *pb.ReadOwnersRequest) (*pb.ReadOwnersResponse, error) {
+	var oneOwner = &pb.Owner{
+		Id:   "1",
+		Name: "John",
+	}
+
+	var owners []*pb.Owner = []*pb.Owner{
+		oneOwner,
+	}
+
+	return &pb.ReadOwnersResponse{
+		Owners: owners,
+	}, nil
 }
