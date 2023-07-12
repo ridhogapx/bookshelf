@@ -26,6 +26,7 @@ func main() {
 	s := grpc.NewServer()
 
 	pb.RegisterBookServiceServer(s, &service.BookSrv{})
+	pb.RegisterOwnerServiceServer(s, &service.OwnerSrv{})
 
 	fmt.Printf("gRPC Server running on port %v", *port)
 
