@@ -9,3 +9,6 @@ build-server:
 
 build-client:
 	go build -o bin/client client/main.go
+
+docker:
+	docker build -t book-service
