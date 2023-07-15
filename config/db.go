@@ -28,3 +28,23 @@ func ConnectionDB() {
 	DB.AutoMigrate(model.Book{})
 	DB.AutoMigrate(model.Owner{})
 }
+
+func ExConnect() {
+	/*
+	* This is example of connection
+	* Just to test. Should not used in production!
+	 */
+
+	var err error
+	dsn := "host=localhost user=root password=root dbname=bookshelf port=5432 sslmode=disable"
+
+	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+
+	if err != nil {
+		panic("Failed to connect database")
+	}
+
+	DB.AutoMigrate(model.Book{})
+	DB.AutoMigrate(model.Owner{})
+
+}
