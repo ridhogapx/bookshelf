@@ -16,7 +16,8 @@ func init() {
 
 func ConnectionDB() {
 	var err error
-	dsn := "host=127.0.0.1 user=root password=root dbname=bookshelf port=5432 sslmode=disable"
+	/* Should be changed to DB Container IP Address! */
+	dsn := "host=172.17.0.2 user=root password=root dbname=bookshelf port=5432 sslmode=disable"
 
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
