@@ -12,3 +12,6 @@ build-client:
 
 docker:
 	docker build -t book-service
+
+container:
+	docker run --name=book_service -p 50051:50051 book_rpc
