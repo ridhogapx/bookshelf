@@ -11,7 +11,7 @@ build-client:
 	go build -o bin/client client/main.go
 
 docker:
-	docker build -t book-service
+	docker build -t book_rpc
 
 container:
 	docker run --name=book_service -p 50051:50051 book_rpc
