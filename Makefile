@@ -4,3 +4,8 @@ postgres:
 start-db:
 	docker container start postgres_container
 
+build-server:
+	go build -o bin/server server/main.go
+
+build-client:
+	go build -o bin/client client/main.go
